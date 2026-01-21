@@ -14,7 +14,92 @@
   min-height: 100vh;
   box-sizing: border-box;
   overflow-y: auto;
-  overflow-x: hidden;
+  overflow-x: auto;
+}
+
+/* Portrait orientation layout - vertical grid */
+@media (max-width: 600px) and (orientation: portrait) {
+  .app.compact {
+    padding: 5px !important;
+  }
+  
+  .app-header-compact {
+    padding: 5px 10px !important;
+    margin-bottom: 5px !important;
+  }
+  
+  .header-title h1 {
+    font-size: 1.1rem !important;
+  }
+  
+  .sequencer {
+    overflow-x: hidden !important;
+    overflow-y: hidden !important;
+    padding: 8px !important;
+    height: calc(100vh - 100px) !important;
+  }
+  
+  .sequencer h2 {
+    font-size: 0.85rem !important;
+    margin-bottom: 5px !important;
+  }
+  
+  .sequencer-grid {
+    flex-direction: row !important;
+    gap: 2px !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    height: 100% !important;
+  }
+  
+  .sequencer-row {
+    flex-direction: column !important;
+    gap: 1px !important;
+    min-height: auto !important;
+    min-width: 30px !important;
+    max-width: 35px !important;
+    flex: 0 0 auto !important;
+    height: 100% !important;
+  }
+  
+  .instrument-label-container {
+    width: 100% !important;
+    height: 40px !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 0 !important;
+    flex-shrink: 0 !important;
+  }
+  
+  .instrument-label {
+    writing-mode: vertical-rl !important;
+    text-orientation: mixed !important;
+    text-align: center !important;
+    width: auto !important;
+    height: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 0.55rem !important;
+  }
+  
+  .step-buttons {
+    flex-direction: column !important;
+    gap: 1px !important;
+    width: 100% !important;
+    flex: 1 !important;
+    overflow: hidden !important;
+  }
+  
+  .step-button {
+    width: 100% !important;
+    height: 0 !important;
+    padding-bottom: 100% !important;
+    min-height: 0 !important;
+    flex: 1 !important;
+    max-height: calc((100% - 15px) / 16) !important;
+    aspect-ratio: 1 / 1 !important;
+  }
 }
 
 /* Compact Header with Controls */
@@ -334,8 +419,9 @@
   flex-direction: column;
   min-height: 0;
   overflow-y: auto;
-  overflow-x: hidden;
+  overflow-x: auto;
   width: 100%;
+  min-width: fit-content;
 }
 
 .sequencer h2 {
