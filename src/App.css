@@ -1,0 +1,590 @@
+/* App Styles - Compact Design */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.app.compact {
+  padding: 10px;
+  max-width: 100%;
+  height: 100vh;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Compact Header with Controls */
+.app-header-compact {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 15px;
+  background: #263238;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  flex-shrink: 0;
+}
+
+.header-title h1 {
+  font-size: 1.3rem;
+  margin: 0;
+  color: #5c6bc0;
+}
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.play-button.compact, .stop-button.compact {
+  font-size: 1.2rem;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.play-button.compact {
+  background: #26a69a;
+  color: white;
+}
+
+.play-button.compact:hover {
+  background: #4db6ac;
+}
+
+.stop-button.compact {
+  background: #ef5350;
+  color: white;
+}
+
+.stop-button.compact:hover {
+  background: #e57373;
+}
+
+.bpm-control.compact {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.bpm-control.compact label {
+  font-weight: 600;
+  color: #b0bec5;
+  font-size: 0.85rem;
+}
+
+.bpm-control.compact input[type="range"] {
+  width: 100px;
+  accent-color: #5c6bc0;
+}
+
+.bpm-control.compact span {
+  min-width: 40px;
+  text-align: center;
+  color: #5c6bc0;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.volume-control.compact {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.volume-control.compact label {
+  font-size: 1rem;
+}
+
+.volume-control.compact input[type="range"] {
+  width: 80px;
+  accent-color: #26a69a;
+}
+
+.volume-control.compact span {
+  min-width: 35px;
+  text-align: center;
+  color: #26a69a;
+  font-weight: bold;
+  font-size: 0.85rem;
+}
+
+.toggle-button {
+  padding: 8px 12px;
+  background: #37474f;
+  border: none;
+  border-radius: 4px;
+  color: #b0bec5;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.2s;
+}
+
+.toggle-button:hover {
+  background: #455a64;
+  color: #eceff1;
+}
+
+.toggle-button.active {
+  background: #5c6bc0;
+  color: white;
+}
+
+/* Compact Main */
+.app-main.compact {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  gap: 10px;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.error-message.compact {
+  background: #ef5350;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+/* Pattern Editor Panel */
+.pattern-editor-panel {
+  width: 350px;
+  flex-shrink: 0;
+  overflow: auto;
+}
+
+.pattern-editor-panel .pattern-editor {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.pattern-editor-panel .pattern-textarea {
+  flex: 1;
+  min-height: 100px;
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.app-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 5px;
+  color: #5c6bc0;
+}
+
+.subtitle {
+  color: #78909c;
+  font-size: 0.9rem;
+}
+
+.app-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.app-footer {
+  text-align: center;
+  padding: 20px;
+  color: #78909c;
+  font-size: 0.85rem;
+}
+
+.app-footer a {
+  color: #5c6bc0;
+}
+
+/* Init Overlay */
+.init-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #1a1a2e;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.init-button {
+  font-size: 1.5rem;
+  padding: 20px 40px;
+  background: #5c6bc0;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.init-button:hover {
+  background: #7986cb;
+}
+
+.init-hint {
+  margin-top: 15px;
+  color: #78909c;
+  font-size: 0.9rem;
+}
+
+/* Error Message */
+.error-message {
+  background: #ef5350;
+  color: white;
+  padding: 15px 20px;
+  border-radius: 4px;
+  text-align: center;
+}
+
+/* Controls */
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  background: #263238;
+  border-radius: 4px;
+  flex-wrap: wrap;
+}
+
+.play-button, .stop-button {
+  font-size: 1.2rem;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.play-button {
+  background: #26a69a;
+  color: white;
+}
+
+.play-button:hover {
+  background: #4db6ac;
+}
+
+.stop-button {
+  background: #ef5350;
+  color: white;
+}
+
+.stop-button:hover {
+  background: #e57373;
+}
+
+.bpm-control {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.bpm-control label {
+  font-weight: 600;
+  color: #b0bec5;
+}
+
+.bpm-control input[type="range"] {
+  width: 150px;
+  accent-color: #5c6bc0;
+}
+
+.bpm-control span {
+  min-width: 60px;
+  text-align: center;
+  color: #5c6bc0;
+  font-weight: bold;
+}
+
+/* Sequencer Grid */
+.sequencer {
+  background: #263238;
+  border-radius: 4px;
+  padding: 15px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.sequencer h2 {
+  margin-bottom: 10px;
+  color: #eceff1;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.sequencer-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  overflow: hidden;
+}
+
+.sequencer-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  min-height: 35px;
+}
+
+.instrument-label-container {
+  width: 70px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 8px;
+}
+
+.instrument-label {
+  font-weight: 600;
+  color: #78909c;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  text-align: right;
+  width: 100%;
+}
+
+.instrument-label.compact {
+  font-size: 0.6rem;
+}
+
+.step-buttons {
+  display: flex;
+  gap: 2px;
+  flex: 1;
+  align-items: center;
+  min-height: 35px;
+}
+
+.step-button {
+  flex: 1;
+  aspect-ratio: 1;
+  max-width: 35px;
+  min-width: 25px;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background-color 0.15s;
+  background: #37474f;
+  height: 35px;
+}
+
+.step-buttons {
+  display: flex;
+  gap: 2px;
+  flex: 1;
+}
+
+.step-button {
+  flex: 1;
+  aspect-ratio: 1;
+  max-width: 35px;
+  min-width: 20px;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background-color 0.15s;
+  background: #37474f;
+}
+
+.step-button:hover {
+  background: #455a64;
+}
+
+.step-button.active {
+  background: #5c6bc0;
+  border: none;
+}
+
+.step-button.playing {
+  outline: 3px solid #eceff1;
+  outline-offset: -3px;
+}
+
+/* Pattern Editor */
+.pattern-editor {
+  background: #263238;
+  border-radius: 4px;
+  padding: 15px;
+}
+
+.pattern-editor h2 {
+  margin-bottom: 10px;
+  color: #eceff1;
+  font-size: 1rem;
+}
+
+.pattern-textarea {
+  width: 100%;
+  min-height: 80px;
+  padding: 10px;
+  border: none;
+  border-radius: 2px;
+  background: #37474f;
+  color: #eceff1;
+  font-family: 'Monaco', 'Menlo', 'Consolas', monospace;
+  font-size: 12px;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+.pattern-textarea:focus {
+  outline: 2px solid #5c6bc0;
+  outline-offset: 0;
+}
+
+.preset-buttons {
+  display: flex;
+  gap: 6px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.preset-button {
+  padding: 5px 10px;
+  background: #37474f;
+  border: none;
+  border-radius: 2px;
+  color: #b0bec5;
+  cursor: pointer;
+  font-size: 0.75rem;
+  transition: background-color 0.2s;
+}
+
+.preset-button:hover {
+  background: #455a64;
+  color: #eceff1;
+}
+
+/* Sound Selector */
+.sound-selector {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.sound-selector label {
+  color: #78909c;
+  font-size: 0.9rem;
+}
+
+.sound-selector select {
+  padding: 8px 12px;
+  background: #37474f;
+  border: none;
+  border-radius: 2px;
+  color: #eceff1;
+  cursor: pointer;
+}
+
+.sound-selector select:focus {
+  outline: 2px solid #5c6bc0;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .controls {
+    flex-direction: column;
+  }
+  
+  .step-button {
+    max-width: 35px;
+  }
+  
+  .app-header h1 {
+    font-size: 1.8rem;
+  }
+}
+
+/* Pattern Editor Overlay */
+.pattern-editor-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(2px);
+}
+
+.pattern-editor-modal {
+  background: #263238;
+  border-radius: 8px;
+  padding: 20px;
+  max-width: 500px;
+  width: 90%;
+  max-height: 80vh;
+  overflow: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  border: 1px solid #37474f;
+}
+
+.pattern-editor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.pattern-editor-header h2 {
+  margin: 0;
+  color: #eceff1;
+  font-size: 1.2rem;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  color: #b0bec5;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.close-button:hover {
+  background: #37474f;
+  color: #eceff1;
+}
