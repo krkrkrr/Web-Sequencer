@@ -203,26 +203,6 @@ function Sequencer({ pattern, onPatternChange, activeStep }) {
           </div>
         ))}
       </div>
-      
-      {/* Beat markers */}
-      <div className="sequencer-row" style={{ marginTop: '10px' }}>
-        <span className="row-label"></span>
-        <div className="step-buttons">
-          {Array(STEPS).fill(null).map((_, i) => (
-            <span 
-              key={i} 
-              style={{ 
-                flex: 1, 
-                textAlign: 'center', 
-                fontSize: '0.7rem',
-                color: i % 4 === 0 ? '#5c6bc0' : '#546e7a'
-              }}
-            >
-              {i + 1}
-            </span>
-          ))}
-        </div>
-      </div>
     </div>
   )
 }
