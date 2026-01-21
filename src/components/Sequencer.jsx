@@ -168,7 +168,6 @@ function Sequencer({ pattern, onPatternChange, activeStep }) {
 
   return (
     <div className="sequencer">
-      <h2>🎛️ Step Sequencer</h2>
       <div className="sequencer-grid">
         {INSTRUMENTS.map((instrument, instrumentIndex) => (
           <div key={instrument.id} className="sequencer-row">
