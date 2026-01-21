@@ -37,18 +37,19 @@ function generateEuclideanRhythm(hits, total) {
 function parsePatternToGrid(pattern) {
   const grid = INSTRUMENTS.map(() => Array(STEPS).fill(false))
   
-  // Handle stack patterns by splitting into individual patterns
-  const stackRegex = /stack\s*\(\s*([^)]+)\s*\)/
-  const stackMatch = pattern.match(stackRegex)
-  const patternsToProcess = stackMatch 
-    ? stackMatch[1].split(',').map(p => p.trim())
-    : [pattern.trim()]
+  // Extract all s(...) patterns using regex (works for both stack and single patterns)
+  const sPatternRegex = /s\s*\(\s*"([^"]+)"\s*\)(?:\.[\w]+\([^)]*\))*/g
+  const matches = [...pattern.matchAll(sPatternRegex)]
+  const patternsToProcess = matches.map(match => match[0])
   
   patternsToProcess.forEach(singlePattern => {
+    // Remove .gain() modifiers for parsing
+    const cleanPattern = singlePattern.replace(/\.gain\([^)]*\)/g, '')
+    
     INSTRUMENTS.forEach((instrument, instrumentIndex) => {
       // Match struct pattern: s("bd").struct("x ~ x ~ ...")
       const structRegex = new RegExp(`s\\s*\\(\\s*["']${instrument.id}["']\\s*\\)\\.struct\\s*\\(\\s*["']([^"']+)["']\\s*\\)`)
-      const structMatch = singlePattern.match(structRegex)
+      const structMatch = cleanPattern.match(structRegex)
       
       if (structMatch) {
         const steps = structMatch[1].split(/\s+/)
@@ -57,12 +58,11 @@ function parsePatternToGrid(pattern) {
             grid[instrumentIndex][i] = true
           }
         })
-        return
       }
       
       // Match repeat pattern: s("bd*4") or s("bd*8") etc
       const repeatRegex = new RegExp(`s\\s*\\(\\s*["']${instrument.id}\\*(\\d+)["']\\s*\\)`)
-      const repeatMatch = singlePattern.match(repeatRegex)
+      const repeatMatch = cleanPattern.match(repeatRegex)
       
       if (repeatMatch) {
         const count = parseInt(repeatMatch[1], 10)
@@ -70,12 +70,11 @@ function parsePatternToGrid(pattern) {
         for (let i = 0; i < count && i * interval < STEPS; i++) {
           grid[instrumentIndex][i * interval] = true
         }
-        return
       }
       
       // Match euclidean pattern: s("bd(3,8)") or s("sd(5,8)") etc
       const euclideanRegex = new RegExp(`s\\s*\\(\\s*["']${instrument.id}\\(\\s*(\\d+)\\s*,\\s*(\\d+)\\s*\\)["']\\s*\\)`)
-      const euclideanMatch = singlePattern.match(euclideanRegex)
+      const euclideanMatch = cleanPattern.match(euclideanRegex)
       
       if (euclideanMatch) {
         try {
@@ -95,12 +94,11 @@ function parsePatternToGrid(pattern) {
         } catch (error) {
           console.warn('Failed to parse euclidean rhythm:', error)
         }
-        return
       }
       
       // Match sequence pattern: s("bd sd hh sd") - distribute tokens across 16 steps
       const sequenceRegex = /s\s*\(\s*["']([^"']+)["']\s*\)/
-      const sequenceMatch = singlePattern.match(sequenceRegex)
+      const sequenceMatch = cleanPattern.match(sequenceRegex)
       
       if (sequenceMatch) {
         const tokens = sequenceMatch[1].split(/\s+/)
@@ -111,7 +109,6 @@ function parsePatternToGrid(pattern) {
             grid[instrumentIndex][i] = true
           }
         }
-        return
       }
     })
   })
@@ -171,7 +168,6 @@ function Sequencer({ pattern, onPatternChange, activeStep }) {
 
   return (
     <div className="sequencer">
-      <h2>🎛️ Step Sequencer</h2>
       <div className="sequencer-grid">
         {INSTRUMENTS.map((instrument, instrumentIndex) => (
           <div key={instrument.id} className="sequencer-row">
@@ -202,26 +198,6 @@ function Sequencer({ pattern, onPatternChange, activeStep }) {
             </div>
           </div>
         ))}
-      </div>
-      
-      {/* Beat markers */}
-      <div className="sequencer-row" style={{ marginTop: '10px' }}>
-        <span className="row-label"></span>
-        <div className="step-buttons">
-          {Array(STEPS).fill(null).map((_, i) => (
-            <span 
-              key={i} 
-              style={{ 
-                flex: 1, 
-                textAlign: 'center', 
-                fontSize: '0.7rem',
-                color: i % 4 === 0 ? '#5c6bc0' : '#546e7a'
-              }}
-            >
-              {i + 1}
-            </span>
-          ))}
-        </div>
       </div>
     </div>
   )

@@ -7,31 +7,31 @@ const PRESETS = [
   },
   {
     name: 'Four on the Floor',
-    pattern: 'stack(\n  s("bd*4"),\n  s("~ sd ~ sd"),\n  s("hh*8")\n)'
+    pattern: 'stack(s("bd*4"), s("~ sd ~ sd"), s("hh*8"))'
   },
   {
     name: 'Breakbeat',
-    pattern: 'stack(\n  s("bd ~ ~ bd ~ ~ bd ~"),\n  s("~ ~ sd ~ ~ sd ~ sd"),\n  s("hh*8").gain(0.6)\n)'
+    pattern: 'stack(s("bd ~ ~ bd ~ ~ bd ~"), s("~ ~ sd ~ ~ sd ~ sd"), s("hh*8").gain(0.6))'
   },
   {
     name: 'House',
-    pattern: 'stack(\n  s("bd*4"),\n  s("~ cp ~ cp"),\n  s("[~ hh]*8").gain(0.5),\n  s("~ ~ ~ ~ ~ ~ oh ~").gain(0.4)\n)'
+    pattern: 'stack(s("bd*4"), s("~ cp ~ cp"), s("[~ hh]*8").gain(0.5), s("~ ~ ~ ~ ~ ~ oh ~").gain(0.4))'
   },
   {
     name: 'Synth Melody',
-    pattern: 'note("<c3 e3 g3 b3>*2")\n  .sound("sawtooth")\n  .lpf(800)\n  .decay(0.2)\n  .sustain(0)'
+    pattern: 'note("<c3 e3 g3 b3>*2").sound("sawtooth").lpf(800).decay(0.2).sustain(0)'
   },
   {
     name: 'Ambient',
-    pattern: 'note("<[c3,e3,g3] [d3,f3,a3] [e3,g3,b3] [f3,a3,c4]>/2")\n  .sound("sine")\n  .attack(0.5)\n  .decay(1)\n  .sustain(0.3)\n  .release(2)\n  .room(0.8)'
+    pattern: 'note("<[c3,e3,g3] [d3,f3,a3] [e3,g3,b3] [f3,a3,c4]>/2").sound("sine").attack(0.5).decay(1).sustain(0.3).release(2).room(0.8)'
   },
   {
     name: 'Techno',
-    pattern: 'stack(\n  s("bd*4").gain(1.2),\n  s("~ sd:1 ~ sd:1"),\n  s("hh*16").gain(0.3),\n  s("~ ~ ~ ~ oh ~ ~ ~").gain(0.4)\n)'
+    pattern: 'stack(s("bd*4").gain(1.2), s("~ sd:1 ~ sd:1"), s("hh*16").gain(0.3), s("~ ~ ~ ~ oh ~ ~ ~").gain(0.4))'
   },
   {
     name: 'Polyrhythm',
-    pattern: 'stack(\n  s("bd(3,8)"),\n  s("sd(5,8)").gain(0.8),\n  s("hh(7,8)").gain(0.5)\n)'
+    pattern: 'stack(s("bd(3,8)"), s("sd(5,8)").gain(0.8), s("hh(7,8)").gain(0.5))'
   }
 ]
 
